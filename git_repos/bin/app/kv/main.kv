@@ -1,0 +1,35 @@
+
+<SManager>:
+    MDScreen:
+
+        FloatLayout:
+            MDCard:
+                pos_hint:{'x':.2,'y':.2}
+                size_hint:.5,.5
+                color:rgba('#070F27')
+                elevation:-32
+                focus_behavior:True
+
+                MDGridLayout:
+                    id:grid
+                    rows:1
+                    padding:'16sp'
+                    BoxLayout:
+                        text:'start'
+                        orientation:'vertical'
+                        padding:'16sp'
+                        Label:
+                            text:'Login Now'
+                        MDTextField:
+                            normal_background:''
+                        MDLabel:
+                            text:'Welcome to GitHub!'
+                            # halign:'justify'
+                            # valign:'top'
+                            size_hint:None,None
+                            adaptive_height:True
+                            pos_hint:{'top':1}
+                            # pos
+                        # Button:
+                    MDRaisedButton:
+                        text:'continue'
