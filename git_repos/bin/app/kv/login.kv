@@ -1,0 +1,68 @@
+
+<LoginPage>:
+    canvas:
+        Color:
+            rgb:rgba('#070F27')
+        Rectangle:
+            size:self.size
+            pos:self.pos
+    FloatLayout:
+        MDCard:
+            pos_hint:{'x':.2,'y':.2}
+            size_hint:.5,.5
+            color:rgba('#070F27')
+            elevation:32
+            # focus_behavior:True
+            md_bg_color:rgba('#070F27')
+
+            MDGridLayout:
+                id:grid
+                rows:1
+                padding:'16sp'
+                BoxLayout:
+                    text:'start'
+                    orientation:'vertical'
+                    padding:'16sp'
+                    MDGridLayout:
+                        cols:2
+                        MDIcon:
+                            icon:'language-python'
+                            size_hint:.11,1
+                        Label:
+                            text:'Login To Saidino System'
+                    MDTextField:
+                        id:pass_input
+                        normal_background:''
+                        label:'saidino'
+                    MDLabel:
+                        text:'Hi Wellcome back !'
+                        # halign:'justify'
+                        # valign:'top'
+                        size_hint:None,None
+                        adaptive_height:True
+                        pos_hint:{'top':1}
+                    MDLabel:
+                        
+                        text:'@saidino'
+                        # halign:'justify'
+                        # valign:'top'
+                        size_hint:None,None
+                        adaptive_height:True
+                        pos_hint:{'top':1}
+                        theme_text_color:'Hint'
+                    MDLabel:
+                        id:login_res
+                        text:''
+                        # halign:'justify'
+                        # valign:'top'
+                        size_hint:None,None
+                        adaptive_height:True
+                        pos_hint:{'top':1}
+                        theme_text_color:'Error'
+
+                        # pos
+                    # Button:
+                MDRaisedButton:
+                    text:'continue'
+                    on_release:
+                        root.login(pass_input)

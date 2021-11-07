@@ -18,10 +18,15 @@ class GitApp(MDApp,App):
     KV_FILES ={
         os.path.join(os.getcwd(),'bin/app/kv/main.kv'),
         os.path.join(os.getcwd(),'bin/app/kv/login.kv'),
+        os.path.join(os.getcwd(),'bin/app/kv/game.kv'),
     }
     CLASSES={
+            "<SManager>":'bin/app/uix/manager',
             '<LoginPage>':'bin/app/uix/loginPage',
-            "<SManager>":'bin/app/uix/manager'
+            "<GamePage>":'bin/app/uix/game_screen',
+            "<CanvaBasic>":'bin/app/uix/canvas_only',
+            "<Quicar>":'bin/app/uix/canvasbasics/quicar',
+            "<CanvasBasic2>":'bin/app/uix/canvasbasics/canvas_basic_2'
             }
     AUTORELOADER_PATHS =[(os.getcwd(), {'recursive':True}),]
     def __init__(self,**kwargs):

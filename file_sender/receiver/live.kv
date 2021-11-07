@@ -1,0 +1,148 @@
+#: import STANDARD_INCREMENT kivymd.material_resources.STANDARD_INCREMENT
+
+<MiniCopier>:
+    angulo_final:0
+    angulo_inicial:0
+    angulo_max:360
+    MDRectangleFlatIconButton:
+        icon:'send'
+        bold:True
+        text:'enviar'
+        id:btn_start
+        # md_bg_color:rgba('#d35400')
+        pos:root.width//2-100,(root.height//2)-70
+        -width:200
+        -height:65
+        on_release:
+            root.start_magic_saver()
+    MDFlatButton:
+        text:'Choose Image from'
+        -width:root.width
+        md_bg_color:app.theme_cls.bg_dark
+        on_release:
+            root.choose_image()
+    Widget:
+        id:progress
+        radius:60
+        w:39
+        cor:(0.06,0.33,0.36,.3)
+        pos:btn_start.pos[0]+btn_start.width-100,btn_start.pos[1]-100
+        canvas.before:
+            Color:
+                rgba:self.cor if not root.full else (1,.23,.1,1)
+
+            Line:
+                # circle:(self.x,self.y,self.radius,0,360)
+                circle:(self.x,self.y,self.radius,root.angulo_inicial,root.angulo_final)
+                width:40
+                cap:'square'
+    BoxLayout:
+        padding:'20dp'
+        id:loaded_image
+        is_loaded:False
+        y:450
+
+    MDLabel:
+        markup:True
+        text:f"[color=#ff0fff]{root.full} %[/color]  carregado !" if root.full>=99 else f"[color=#ff0fff]{root.full} %[/color]"
+        font_size: '23sp'
+        font_name:'BrokenGlass.otf'
+        # pos:btn_start.pos[0]+btn_start.width-100,btn_start.pos[1]-100
+        font_style:'H6'
+        adaptive_height:True
+        bold:True
+        # valign:'center'
+        pos_hint: {'x':.46,'top':.75}
+<Spaco@Widget>:
+    size_hint_y:None
+    height:'12dp'
+<ImageItem>:
+    size_hint_y:None
+    height:'200dp'
+    padding:'30dp'
+
+    MDCard:
+        padding:'5dp','5dp','5dp',"5dp"
+        # elevation:30
+        border_radius:'25dp'
+        md_bg_color:app.theme_cls.bg_light#rgba("#3498db")#rgba('#27ae60')
+        # canvas:
+        #     Color:
+        #         rgba:rgba('#27ae60')
+        #     Rectangle:
+        #         pos:self.pos
+        #         size:self.size
+        BoxLayout:
+            size_hint_x:.5
+            padding:'5dp','5dp','5dp','5dp'
+            canvas.before:
+                Color:
+                    rgba:app.theme_cls.bg_dark
+                Rectangle:
+                    pos:self.pos
+                    size:self.size
+            Image:
+                id:image_item
+                # source:root.source_img
+                source:root.source
+                allow_stretch:True
+                width:STANDARD_INCREMENT*2
+                x:root.width-self.width+STANDARD_INCREMENT-10
+
+        MDBoxLayout:
+            id:box
+            orientation: 'vertical'
+            padding:10
+            # md_bg_color:rgba('#3498db')
+            MDBoxLayout:
+                MDLabel:
+                    text:'[color=#e67e22]Name :[/color]'
+                    markup:True
+                    font_style:'H6'
+                    size_hint_x:.4
+                    size:self.texture_size
+                # Spaco:
+                MDLabel:
+                    id:image_des
+                    text:f'{root.description} ...'
+                    size_hint_y:None
+                    size:self.texture_size
+            MDBoxLayout:
+                MDLabel:
+                    size_hint_y:None
+                    id:image_siz
+                    size:self.texture_size
+                    text:f'[color=#e67e22][size] :[/color]'
+                    markup:True
+                    font_style:'H6'
+                MDLabel:
+                    id:image_siz
+                    size_hint_y:None
+                    size:self.texture_size
+                    id:image_siz
+                    text:f'{root.imag_size} MB'
+                    # valign:'left'
+            Widget:
+        MDIconButton:
+            icon:'delete'
+            size_hint:.1,.1
+            # text:'x'
+            on_release:
+                root.remove_from_parent()
+    MDBoxLayout:
+        md_bg_color:1,1,1,.1
+        size_hint_y:.4
+        padding:'10dp'
+        canvas.before:
+            Color:
+                rgba:2,.22,.22,1
+            Rectangle:
+                pos:self.pos
+                size:10,self.size[1]
+        MDLabel:
+            color:app.theme_cls.primary_color
+            text:'This is my label  if you want to add more than it please get support on my github'
+            # shorten: True
+            shorten_from: 'right'
+            size_hint_y:None
+            height:self.texture_size[1]

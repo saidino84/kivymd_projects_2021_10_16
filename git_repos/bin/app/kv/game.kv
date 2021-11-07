@@ -1,0 +1,138 @@
+<GamePage>:
+    canvas:
+        Color:
+            rgb:rgba('#070F27')
+        Rectangle:
+            size:self.size
+            pos:self.pos
+    MDBoxLayout:
+        pos_hint:{'y':.90}
+        adaptive_height:True
+        # md_bg_color:app.theme_cls.primary_color
+        orientation:'vertical'
+        MDToolbar:
+            title:'Game Home'
+            left_action_items:[['shield-home',lambda x:root.goHome()]]
+            right_action_items:[['motion-play',lambda x:quicar.start_game()],['dots-vertical',lambda x:print('hi')],['']]
+            pos_hint:{'top':1}
+        # MDRaisedButton:
+        #     text:f'< {root.px1}'
+        #     on_release:
+        #         root.goHome()
+        #         # root.upda
+        MDLabel:
+            id:res
+            text:f""
+
+    BoxLayout:
+        pos_hint:{'x':.2,'y':.80}
+        spacing:10
+
+        MDRaisedButton:
+            text:'Quicar'
+            md_bg_color:1,.2,.2,1
+            on_release:
+                quicar.opacity=1
+                canvas_ex1.opacity=0
+                cnv_basic.opacity=0
+
+        MDRaisedButton:
+            # pos_hint:{'x':.12,'y':.80}
+            text:'Canvas Basic'
+            on_release:
+                cnv_basic.opacity=1
+                canvas_ex1.opacity=0
+                quicar.opacity=0
+        MDRaisedButton:
+            # pos_hint:{'x':.12,'y':.80}
+            text:'Canvas Ex1'
+            on_release:
+                canvas_ex1.opacity=1
+                quicar.opacity=0
+                cnv_basic.opacity=0
+
+        MDRaisedButton:
+            # pos_hint:{'x':.12,'y':.80}
+            text:'Canvas Ex2'
+            on_release:
+                root.add_some_widget(1)
+                # cnv_basic.opacity=1
+                # canvas_ex1.opacity=0
+                # quicar.opacity=0
+                # container.clear_widgets()
+                # container.add_widget(CanvasBasic())
+        MDRaisedButton:
+            # pos_hint:{'x':.12,'y':.80}
+            text:'Canvas Basic 2'
+            on_release:
+                container.clear_widgets()
+                # container.add_widget(CanvasBasic2())
+
+                # cnv_basic.opacity=1
+                # canvas_ex1.opacity=0
+                # quicar.opacity=0
+        
+        FloatLayout:
+            pos_hint:{'x':1,'y':.90}
+            id:container
+
+    CanvasEx1:
+        id:canvas_ex1
+        opacity:0
+    Quicar:
+        id:quicar
+        opacity:0
+    CanvasBasic:
+        id:cnv_basic
+        opacity:0
+    CanvasBasic2:
+        opacity:1
+         
+<CanvasEx1@Widget>:
+    id:gammer
+    x1:200.1
+    canvas:
+        Color:
+            rgba:(.32,.1,.32,1)
+        Line:
+            width:2
+            points:(0,self.height/2,self.width,self.height/2)
+        Color:
+            rgba:(1,.23,.1,1)
+        Line:
+            points:(self.width/2,0, self.width/2, self.height)
+            width:2
+        Color:
+            rgba:(1,1,1,.4)
+        Ellipse:
+            pos:(self.width/2-50,self.height/2-50)
+            size:100,100
+        Color:
+            rgba:(1,1,1,1)
+        Line:
+            circle:(self.width/2,self.height/2,50)
+            width:2
+        Line:
+            rectangle:(((self.width/2)*2)-(self.width/2)/2,(self.height/2)/2,50,50)
+        Line:
+            points:(0,0,self.width/2,self.height/2)
+        Line:
+            points:(self.width/2,self.height/2,self.width,0)
+        Line:
+            points:(120,0,self.width/2,self.height/2)
+        Line:
+            points:(self.width/2,self.height/2,self.width-120,0)
+        Line:
+            points:(250,0,self.width/2,self.height/2)
+        Line:
+            points:(self.width/2,self.height/2,self.width-200,0)
+        Color:
+            rgba:(1,.3,.4,1)
+        Line:
+            # linha  \/\/
+            points:(0,0,self.width/4,self.height/4, self.width/2,0,self.width*3/4,self.height/4,self.width,0)
+            width:4.0
+
+
+
+
